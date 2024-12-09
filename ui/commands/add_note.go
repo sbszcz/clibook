@@ -14,11 +14,11 @@ const (
 	NoteFlagName    = "note"
 )
 
-type AddCommand struct {
+type AddNote struct {
 	DB *sql.DB
 }
 
-func (c *AddCommand) Create() *cli.Command {
+func (c *AddNote) Create() *cli.Command {
 	cmd := &cli.Command{
 		Name:   AddCommandName,
 		Usage:  "add a new note for a command",
@@ -39,7 +39,7 @@ func (c *AddCommand) Create() *cli.Command {
 	return cmd
 }
 
-func (c *AddCommand) handleAddCommand(ctx context.Context, cmd *cli.Command) error {
+func (c *AddNote) handleAddCommand(ctx context.Context, cmd *cli.Command) error {
 	command := cmd.String(CommandFlagName)
 	if len(command) < 1 {
 		return cli.ShowAppHelp(cmd)
