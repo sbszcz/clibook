@@ -56,13 +56,13 @@ func (q *Queries) GetAll(ctx context.Context) ([]CliNote, error) {
 	return items, nil
 }
 
-const getCliNote = `-- name: GetCliNote :one
+const getOne = `-- name: GetOne :one
 SELECT id, command, note, created_at FROM cli_notes
 WHERE id = ? LIMIT 1
 `
 
-func (q *Queries) GetCliNote(ctx context.Context, id int64) (CliNote, error) {
-	row := q.db.QueryRowContext(ctx, getCliNote, id)
+func (q *Queries) GetOne(ctx context.Context, id int64) (CliNote, error) {
+	row := q.db.QueryRowContext(ctx, getOne, id)
 	var i CliNote
 	err := row.Scan(
 		&i.ID,

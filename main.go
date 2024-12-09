@@ -4,11 +4,13 @@ import (
 	"context"
 	"database/sql"
 	_ "embed"
+	"fmt"
 	"log"
 	"os"
 
 	"github.com/adrg/xdg"
-	"github.com/sbszcz/clibook/commands"
+	"github.com/sbszcz/clibook/ui/actions"
+	"github.com/sbszcz/clibook/ui/commands"
 	"github.com/sbszcz/clibook/utils"
 	"github.com/urfave/cli/v3"
 	_ "modernc.org/sqlite"
@@ -35,21 +37,35 @@ func main() {
 		log.Fatal(err)
 	}
 
-	tabRenderAction := commands.TabRenderAction{DB: db}
-	addCommand := commands.AddCommand{DB: db}
-	// exportCommand := commands.ExportCommand{DB: db}
+	rootAction := actions.RootAction{DB: db}
+
+	addNote := commands.AddNote{DB: db}
 
 	cmd := &cli.Command{
-		Name:   "clibook",
-		Usage:  "Maintain your command line diary directly from your favorite place.",
-		Action: tabRenderAction.Render,
+		Name:  "clibook",
+		Usage: "Maintain your command line diary directly from your favorite place.",
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:    "format",
+				Value:   "tab",
+				Aliases: []string{"f"},
+				Usage:   "Determines the output format of clibook content. Possible formats are: tab (default), csv",
+			},
+			&cli.StringFlag{
+				Name:    "id",
+				Value:   "",
+				Aliases: []string{"i"},
+				Usage:   "Only one item with given ID is selected.",
+			},
+		},
+		Action: rootAction.Run,
 		Commands: []*cli.Command{
-			addCommand.Create(),
-			// exportCommand.Create(),
+			addNote.Create(),
 		},
 	}
 
 	if err := cmd.Run(context.Background(), os.Args); err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
+		os.Exit(1)
 	}
 }

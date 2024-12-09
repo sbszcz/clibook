@@ -1,4 +1,4 @@
--- name: GetCliNote :one
+-- name: GetOne :one
 SELECT * FROM cli_notes
 WHERE id = ? LIMIT 1;
 
