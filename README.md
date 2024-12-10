@@ -31,7 +31,7 @@ curl https://raw.githubusercontent.com/sbszcz/clibook/refs/heads/main/clibook-zs
 My current workflow with `clibook` looks like this.
 
 1. Issuing a command!
-1. Pressing `ctrl + e` opens neovim to take notes for the previously executed command.
+1. Pressing `alt + t` opens neovim to take notes for the previously executed command.
 1. Fuzzy searching through my _clibook_ by pressing `ctrl + t` and adding the selection to the command prompt for repeated execution.
 
 ## Example

@@ -47,8 +47,8 @@ add-clibook-entry-widget() {
 # Create a zsh widget for the function
 zle -N add-clibook-entry-widget
 
-# Bind the widget to a key combination (e.g., Ctrl-E)
-bindkey '^E' add-clibook-entry-widget
+# Bind the widget to a key combination (e.g., Alt-E)
+bindkey '^[t' add-clibook-entry-widget
 
 
 ######################################
