@@ -1,3 +1,11 @@
+# Motivation
+
+While preparing for the CKAD exam recently, I often felt the need to document and annotate the kubectl commands I used. My process involved copying the commands, pasting them into my note-taking tool (Obsidian), and adding comments. Over time, this manual process became cumbersome, and I began wondering if there might be an easier way to integrate this into my command-line-focused workflow.
+
+This led me to explore zsh widgets more deeply, and I developed a newfound appreciation for the Z shell. However, I still needed a small backend tool to simplify the management of my notes. Being a fan of Go, I decided to implement the tool in Go.
+
+In the end, I wrote this small tool and combined it with zsh widgets.
+
 # Prerequisites
 
 - [Z shell (zsh)](https://www.zsh.org) for a convenient shell experience
