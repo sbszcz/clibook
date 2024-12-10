@@ -4,7 +4,7 @@ While preparing for the CKAD exam recently, I often felt the need to document an
 
 This led me to explore zsh widgets more deeply, and I developed a newfound appreciation for the Z shell. However, I still needed a small backend tool to simplify the management of my notes. Being a fan of Go, I decided to implement the tool in Go.
 
-In the end, I wrote this small tool and combined it with zsh widgets.
+I finally came up with this solution which works pretty well for me.
 
 # Prerequisites
 
